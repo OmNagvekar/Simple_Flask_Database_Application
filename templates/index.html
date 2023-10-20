@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIT Form</title>
+    <style>
+        #title{
+            background-color: aquamarine;
+            text-align: center;
+            font-size: large;
+            padding: 1em;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0,0,0.2);
+            border: 1px solid #ccc;
+            border-radius: 1em;
+            width: 400px;
+        }
+        #button{
+            width: 100%;
+            padding: 10px 0;
+            margin: 10px auto;
+            border-radius: 5px; 
+            border: none;
+            background: #1c87c9; 
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+        }
+        #button:hover {
+            background: #26a9e0;
+        }
+        form{
+            width: 400px;
+            background-color:  skyblue;
+            padding: 1em;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0,0,0.2);
+            color: red;
+            border: 1px solid #ccc;
+            border-radius: 1em;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        html {
+            display: flex;
+            justify-content: center;
+            height: 100%;
+        }
+    </style>
+    <script>
+        function myfunction(event)
+        {
+            var msg = "Please Enter";
+            var name = document.getElementById("name").value;
+            var prn = document.getElementById("prn").value;
+            var email = document.getElementById("email").value;
+            var class= document.getElementById("class").value;
+            var number = document.getElementById("phone_No").value;
+            var digit = /[0-9]/;
+            var character=/[a-zA-Z]/;
+            
+            if (digit.test(name))
+            {
+                msg += "\nCharacters In Name";
+                event.preventDefault();
+            }
+            if(email==null || email=="")
+            {
+                msg=msg+"\nEnter mail id";
+                event.preventDefault();
+            }
+            
+            if (msg != "Please Enter")
+            {
+                alert(msg);
+                return false;
+            }
+            else
+            {
+                alert("Data submitted");
+            }
+        }
+    </script>
+</head>
+<body>
+    <p id="title"><b>Student Registration Form</b></p><br>
+    <form onsubmit="return myfunction(event)" id="form1" action="http://localhost:5000/login" method = "post">
+        <p><b>Full Name:</b><input type="text" name="name" id="name" required></p>
+        <br>
+        <p><b>PRN:</b><input type="number" name="prn" id="prn" maxlength="10" required></p>
+        <br>
+        <label for="class"><b>class:</b></label>
+        <select name="class" id="class">
+            <option value="FY">FY</option>
+            <option value="SY">SY</option>
+            <option value="TY">TY</option>
+            <option value="Final Year">Final Year</option>
+        </select><br>
+        <p><b>Email:</b><input type="Email" name="email" id="email" required></p>
+        <br>
+        <p><b>Phone No:</b><input type="text" name="phone_no" id="phone_no" required></p>
+        <br>
+        <b><input id="button" type="submit" value="Submit"></b>   
+    </form>
+</body>
+</html>
